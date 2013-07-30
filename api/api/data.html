@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data API &mdash; GoLismero 2.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="GoLismero 2.0.1 documentation" href="../index.html" />
+    <link rel="up" title="API" href="../api.html" />
+    <link rel="next" title="Details for information types" href="data/information.html" />
+    <link rel="prev" title="API" href="../api.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="data/information.html" title="Details for information types"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../api.html" title="API"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">GoLismero 2.0.1 documentation</a> &raquo;</li>
+          <li><a href="../api.html" accesskey="U">API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="data-api">
+<h1>Data API<a class="headerlink" href="#data-api" title="Permalink to this headline">¶</a></h1>
+<p>GoLismero has 3 types os data:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data/information.html">Information structures details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data/information.html#module-golismero.api.data.information.text">Text type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data/information.html#module-golismero.api.data.information.binary">Binary type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data/information.html#module-golismero.api.data.information.html">HTML type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data/information.html#module-golismero.api.data.information.webserver_fingerprint">Fingerprint type</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data/resource.html">Resources structures details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data/resource.html#module-golismero.api.data.resource.url">Url type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data/resource.html#module-golismero.api.data.resource.baseurl">Base Url type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data/resource.html#module-golismero.api.data.resource.domain">Domain type</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data/vulnerabilities.html">Vulnerabilities structures details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data/vulnerabilities.html#vulnerability-types">vulnerability types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data/vulnerabilities/information_disclosure.html">Information disclosure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="data/vulnerabilities/information_disclosure.html#module-golismero.api.data.vulnerability.information_disclosure.default_error_page">Default error page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data/vulnerabilities/information_disclosure.html#module-golismero.api.data.vulnerability.information_disclosure.url_disclosure">Url disclosure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="data/vulnerabilities/information_disclosure.html#module-golismero.api.data.vulnerability.information_disclosure.url_suspicious">Url suspicious</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data/vulnerabilities.html#generic-vulnerability-interfaces">Generic vulnerability interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data/vulnerabilities.html#vulnerability-interface">Vulnerability interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data/vulnerabilities.html#vulnerability-sub-interface">Vulnerability sub-interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Each type of data respresent a particular information.</p>
+</div>
+<div class="section" id="generic-base-types">
+<h1>Generic base types<a class="headerlink" href="#generic-base-types" title="Permalink to this headline">¶</a></h1>
+<p>Each type of information has one of de follow common interface:</p>
+<div class="section" id="the-base-class-data">
+<h2>The base class: Data<a class="headerlink" href="#the-base-class-data" title="Permalink to this headline">¶</a></h2>
+<p>This class defines the base of all subtypes of data</p>
+<span class="target" id="module-golismero.api.data"></span><p>GoLismero data model.</p>
+<dl class="class">
+<dt id="golismero.api.data.Data">
+<em class="property">class </em><tt class="descclassname">golismero.api.data.</tt><tt class="descname">Data</tt><a class="headerlink" href="#golismero.api.data.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all data elements.</p>
+<dl class="method">
+<dt id="golismero.api.data.Data.add_information">
+<tt class="descname">add_information</tt><big>(</big><em>info</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.add_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associate an information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>info</strong> (<em>Information</em>) &#8211; Information element.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.add_link">
+<tt class="descname">add_link</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.add_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Link two Data instances together.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Data</em>) &#8211; Another instance of Data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.add_resource">
+<tt class="descname">add_resource</tt><big>(</big><em>res</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.add_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associate a resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>res</strong> (<em>Resource</em>) &#8211; Resource element.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.add_vulnerability">
+<tt class="descname">add_vulnerability</tt><big>(</big><em>vuln</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.add_vulnerability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associate a vulnerability.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>info</strong> (<em>Vulnerability</em>) &#8211; Vulnerability element.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.Data.associated_informations">
+<tt class="descname">associated_informations</tt><a class="headerlink" href="#golismero.api.data.Data.associated_informations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the associated informations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Informations.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">set(Information)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.associated_informations_by_category">
+<tt class="descname">associated_informations_by_category</tt><big>(</big><em>information_type=None</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.associated_informations_by_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get associated informations by type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>information_type</strong> (<em>int</em>) &#8211; One of the Information.INFORMATION_* constants.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Associated informations.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set(Information)</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">The specified information type is invalid.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.Data.associated_resources">
+<tt class="descname">associated_resources</tt><a class="headerlink" href="#golismero.api.data.Data.associated_resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the associated resources.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Resources.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">set(Resource)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.associated_resources_by_category">
+<tt class="descname">associated_resources_by_category</tt><big>(</big><em>resource_type=None</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.associated_resources_by_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get associated informations by type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resource_type</strong> (<em>int</em>) &#8211; One of the Resource.RESOURCE_* constants.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Associated resources.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set(Resource)</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">The specified resource type is invalid.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.Data.associated_vulnerabilities">
+<tt class="descname">associated_vulnerabilities</tt><a class="headerlink" href="#golismero.api.data.Data.associated_vulnerabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the associated vulnerabilities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Vulnerabilities.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">set(Vulnerability)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.associated_vulnerabilities_by_category">
+<tt class="descname">associated_vulnerabilities_by_category</tt><big>(</big><em>cat_name=None</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.associated_vulnerabilities_by_category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get associated vulnerabilites by category.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cat_name</strong> (<em>str</em>) &#8211; category name</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Associated vulnerabilites. Returns an empty set if the category doesn&#8217;t exist.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set(Vulnerability)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.Data.discovered_resources">
+<tt class="descname">discovered_resources</tt><a class="headerlink" href="#golismero.api.data.Data.discovered_resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list with the new resources discovered.</p>
+<p>This property is used by GoLismero itself.
+Plugins do not need to call it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">New resources discovered.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list(Resource)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.get_linked_data">
+<tt class="descname">get_linked_data</tt><big>(</big><em>data_type=None</em>, <em>data_subtype=None</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.get_linked_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the linked Data elements of the given data type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_type</strong> (<em>int</em>) &#8211; Optional data type. One of the Data.TYPE_* values.</li>
+<li><strong>data_subtype</strong> (<em>int | str</em>) &#8211; Optional data subtype.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Data elements.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">set(Data)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">Invalid data_type argument.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.get_links">
+<tt class="descname">get_links</tt><big>(</big><em>data_type=None</em>, <em>data_subtype=None</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.get_links" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the linked Data identities of the given data type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_type</strong> (<em>int</em>) &#8211; Optional data type. One of the Data.TYPE_* values.</li>
+<li><strong>data_subtype</strong> (<em>int | str</em>) &#8211; Optional data subtype.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Identities.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">set(str)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">Invalid data_type argument.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.Data.identity">
+<tt class="descname">identity</tt><a class="headerlink" href="#golismero.api.data.Data.identity" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Identity hash of this object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.Data.linked_data">
+<tt class="descname">linked_data</tt><a class="headerlink" href="#golismero.api.data.Data.linked_data" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Set of linked Data elements.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">set(Data)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.Data.links">
+<tt class="descname">links</tt><a class="headerlink" href="#golismero.api.data.Data.links" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Set of linked Data identities.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">set(str)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.merge">
+<tt class="descname">merge</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge another data object with this one.</p>
+<p>This is the old data, and the other object is the new data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Data</em>) &#8211; Data object to merge with this one.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.reverse_merge">
+<tt class="descname">reverse_merge</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#golismero.api.data.Data.reverse_merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse merge another data object with this one.</p>
+<p>This is the new data, and the other object is the old data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Data</em>) &#8211; Data object to be merged with this one.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="golismero.api.data.Data.validate_link_minimums">
+<tt class="descname">validate_link_minimums</tt><big>(</big><big>)</big><a class="headerlink" href="#golismero.api.data.Data.validate_link_minimums" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the link minimum constraints. Raises an exception if not met.</p>
+<p>Note: The maximums are already checked when creating the links.</p>
+<p>This method is called automatically after plugins return the data.
+Plugins do not need to call it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">The minimum link constraints are not met.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="sub-type-information">
+<h2>Sub-type: Information<a class="headerlink" href="#sub-type-information" title="Permalink to this headline">¶</a></h2>
+<p>The methods and params for general Information types are:</p>
+<span class="target" id="module-golismero.api.data.information"></span><p>Information types.</p>
+<dl class="class">
+<dt id="golismero.api.data.information.Information">
+<em class="property">class </em><tt class="descclassname">golismero.api.data.information.</tt><tt class="descname">Information</tt><a class="headerlink" href="#golismero.api.data.information.Information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#golismero.api.data.Data" title="golismero.api.data.Data"><tt class="xref py py-class docutils literal"><span class="pre">golismero.api.data.Data</span></tt></a></p>
+<p>Base class for informational results.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sub-type-resource">
+<h2>Sub-type: Resource<a class="headerlink" href="#sub-type-resource" title="Permalink to this headline">¶</a></h2>
+<p>The methods and params for general Resources types are:</p>
+<span class="target" id="module-golismero.api.data.resource"></span><p>Resource types.</p>
+<dl class="class">
+<dt id="golismero.api.data.resource.Resource">
+<em class="property">class </em><tt class="descclassname">golismero.api.data.resource.</tt><tt class="descname">Resource</tt><a class="headerlink" href="#golismero.api.data.resource.Resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#golismero.api.data.Data" title="golismero.api.data.Data"><tt class="xref py py-class docutils literal"><span class="pre">golismero.api.data.Data</span></tt></a></p>
+<p>Base class for resources.</p>
+<dl class="method">
+<dt id="golismero.api.data.resource.Resource.is_in_scope">
+<tt class="descname">is_in_scope</tt><big>(</big><big>)</big><a class="headerlink" href="#golismero.api.data.resource.Resource.is_in_scope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines if this resource is within the scope of the current audit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if within scope, False otherwise.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="sub-type-vulnerability">
+<h2>Sub-type: Vulnerability<a class="headerlink" href="#sub-type-vulnerability" title="Permalink to this headline">¶</a></h2>
+<p>The methods and params for general vulnerabilities types are:</p>
+<span class="target" id="module-golismero.api.data.vulnerability"></span><p>Vulnerability types.</p>
+<dl class="class">
+<dt id="golismero.api.data.vulnerability.Vulnerability">
+<em class="property">class </em><tt class="descclassname">golismero.api.data.vulnerability.</tt><tt class="descname">Vulnerability</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#golismero.api.data.vulnerability.Vulnerability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#golismero.api.data.Data" title="golismero.api.data.Data"><tt class="xref py py-class docutils literal"><span class="pre">golismero.api.data.Data</span></tt></a></p>
+<p>Base class for all vulnerabilities.</p>
+<dl class="attribute">
+<dt id="golismero.api.data.vulnerability.Vulnerability.cve">
+<tt class="descname">cve</tt><a class="headerlink" href="#golismero.api.data.vulnerability.Vulnerability.cve" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">CVE ID.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.vulnerability.Vulnerability.cwe">
+<tt class="descname">cwe</tt><a class="headerlink" href="#golismero.api.data.vulnerability.Vulnerability.cwe" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">CWE ID.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.vulnerability.Vulnerability.impact">
+<tt class="descname">impact</tt><a class="headerlink" href="#golismero.api.data.vulnerability.Vulnerability.impact" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Impact rating.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.vulnerability.Vulnerability.references">
+<tt class="descname">references</tt><a class="headerlink" href="#golismero.api.data.vulnerability.Vulnerability.references" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Reference URLs.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple(str)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.vulnerability.Vulnerability.risk">
+<tt class="descname">risk</tt><a class="headerlink" href="#golismero.api.data.vulnerability.Vulnerability.risk" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Risk rating.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="golismero.api.data.vulnerability.Vulnerability.severity">
+<tt class="descname">severity</tt><a class="headerlink" href="#golismero.api.data.vulnerability.Vulnerability.severity" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Severity rating.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="golismero.api.data.vulnerability.UrlVulnerability">
+<em class="property">class </em><tt class="descclassname">golismero.api.data.vulnerability.</tt><tt class="descname">UrlVulnerability</tt><big>(</big><em>url</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#golismero.api.data.vulnerability.UrlVulnerability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#golismero.api.data.vulnerability.Vulnerability" title="golismero.api.data.vulnerability.Vulnerability"><tt class="xref py py-class docutils literal"><span class="pre">golismero.api.data.vulnerability.Vulnerability</span></tt></a></p>
+<p>Base class for all vulnerabilities associated with a single URL.</p>
+<dl class="attribute">
+<dt id="golismero.api.data.vulnerability.UrlVulnerability.url">
+<tt class="descname">url</tt><a class="headerlink" href="#golismero.api.data.vulnerability.UrlVulnerability.url" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">URL where the vulnerability was found.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Url</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Data API</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#generic-base-types">Generic base types</a><ul>
+<li><a class="reference internal" href="#the-base-class-data">The base class: Data</a></li>
+<li><a class="reference internal" href="#sub-type-information">Sub-type: Information</a></li>
+<li><a class="reference internal" href="#sub-type-resource">Sub-type: Resource</a></li>
+<li><a class="reference internal" href="#sub-type-vulnerability">Sub-type: Vulnerability</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../api.html"
+                        title="previous chapter">API</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="data/information.html"
+                        title="next chapter">Details for information types</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/api/data.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="data/information.html" title="Details for information types"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../api.html" title="API"
+             >previous</a> |</li>
+        <li><a href="../index.html">GoLismero 2.0.1 documentation</a> &raquo;</li>
+          <li><a href="../api.html" >API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, GoLismero Project.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
